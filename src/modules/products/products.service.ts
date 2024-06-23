@@ -16,7 +16,7 @@ export class ProductsService implements IProductService {
     const paths = [];
     for (let i = 0; i < files.length; i++) {
       const element = files[i];
-      element.path = `https://market.ilyosbekdev.uz/${element.path}`
+      element.path = `https://bazar.ilyosbekdev.uz/${element.path}`
       paths.push(element.path);
     }
     newProduct.title = createProductDto.title;
