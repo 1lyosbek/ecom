@@ -67,3 +67,4 @@ export class ProductsService implements IProductService {
     return new ResData<ProductEntity>("success", "product deleted", 200, deletedProduct);
   }
 }
+
