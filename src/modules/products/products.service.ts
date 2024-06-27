@@ -25,11 +25,16 @@ export class ProductsService implements IProductService {
     newProduct.category = createProductDto.category;
     newProduct.units = createProductDto.units;
     newProduct.description = createProductDto.description;
-    newProduct.info = [createProductDto.info];
+    newProduct.info = createProductDto.info;
     newProduct.available = true;
     newProduct.urls = paths;
     const createdProduct = await this.productRepository.create(newProduct);
     return new ResData<ProductEntity>("success", "product created successfully", 201, createdProduct);
+  }
+
+  async findByCategory(category: string): Promise<ResData<ProductEntity[]>> {
+    const foundProducts = await this.productRepository.getAllByCategory(category);
+    return new ResData<ProductEntity[]>("success", "products found by category", 200, foundProducts);
   }
 
   async findAll(word: string, limit: number, page: number): Promise<ResData<IProductEntityCount>> {

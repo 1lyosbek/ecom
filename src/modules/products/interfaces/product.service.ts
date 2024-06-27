@@ -6,6 +6,7 @@ import { IProductEntityCount } from "./product.repository";
 
 export interface IProductService {
     findOne(id: number): Promise<ResData<ProductEntity>>;
+    findByCategory(category: string): Promise<ResData<ProductEntity[]>>;
     findAll(word: string, limit: number, page: number): Promise<ResData<IProductEntityCount>>;
     create(files: Array<Express.Multer.File>, createProductDto: ICreateProductDto): Promise<ResData<ProductEntity>>;
     update(id: number, updateProductDto: UpdateProductDto): Promise<ResData<ProductEntity>>;

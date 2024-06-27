@@ -45,13 +45,9 @@ export class UpdateProductDto {
     description: string;
 
     @ApiPropertyOptional({
-        type: Object,
-        properties: {
-            type: { type: "string" },
-            color: { type: "string" },
-        }
+        type: Array,
     })
     @IsObject()
     @IsOptional()
-    info: Array<object>;
+    info: Array<string>;
 }

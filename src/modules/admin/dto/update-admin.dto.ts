@@ -39,6 +39,13 @@ export class UpdateAdminDto {
     password: string;
 
     @ApiPropertyOptional({
+        type: String,
+    })
+    @IsOptional()
+    @IsString()
+    role: RoleEnum;
+
+    @ApiPropertyOptional({
         type: Boolean,
     })
     @IsOptional()

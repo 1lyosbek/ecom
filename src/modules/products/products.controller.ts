@@ -30,16 +30,7 @@ export class ProductsController {
         info: {
           type: "array",
           items: {
-            type: "object",
-            properties: {
-              WiFiFunksiyasi: { type: "string" },
-              EnergiyaToifasi: { type: "string" },
-              SovutgichTuri: { type: "string" },
-              QoshimchaFunksiyasi: { type: "string" },
-              Massa: { type: "string" },
-              Kafolati: { type: "string" },
-              SaqlanganHarorati: { type: "string" },
-            },
+            type: "string",
           },
         },
         ['files']: {
@@ -54,7 +45,6 @@ export class ProductsController {
   })
   @UseInterceptors(FilesInterceptor('files', 3, fileOptions))
   async create(@UploadedFiles() files: Array<Express.Multer.File>, @Body() dto: ICreateProductDto) {
-    console.log(dto);
     return await this.productsService.create(files, dto);
   }
   @ApiQuery({
@@ -78,6 +68,11 @@ export class ProductsController {
   @Get('search')
   async findAll(@Query('search') search: string, @Query('limit') limit: number, @Query('page') page: number) {
     return await this.productsService.findAll(search, limit, page);
+  }
+
+  @Get('category/:category')
+  async findAllByCategory(@Param('category') category: string) {
+    return await this.productsService.findByCategory(category);
   }
 
 

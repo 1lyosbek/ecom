@@ -22,6 +22,9 @@ export class ProductRepository implements IProductRepository{
     async getById(id: number): Promise<ProductEntity> {
         return await this.repository.findOneBy({id});
     }
+    async getAllByCategory(category: string): Promise<ProductEntity[]> {
+        return await this.repository.find({where: {category: category}});
+    }
     async getByTitle(title: string): Promise<ProductEntity> {
         return await this.repository.findOneBy({title});
     } 
